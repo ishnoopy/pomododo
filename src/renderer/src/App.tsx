@@ -32,6 +32,7 @@ function App(): JSX.Element {
       setSessionTime(maxSessionTime)
       setBreakTime(maxBreakTime)
       setIsRunning(false)
+      setIsBreak(false)
       setSessions(0)
       setCurrentDot(0)
     },
