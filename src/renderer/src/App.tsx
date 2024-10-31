@@ -18,7 +18,7 @@ function App(): JSX.Element {
   const [isRunning, setIsRunning] = useState(false)
   const [sessions, setSessions] = useState(0)
   const [currentDot, setCurrentDot] = useState(0)
-  const [numberOfSessions, setNumberOfSessions] = useState(4)
+  const [numberOfSessions] = useState(4)
   const [playSound] = useSound(bubbleSound)
   const [playTimesUpSound] = useSound(timesUpSound)
   const [darkMode, setDarkMode] = useState(false)

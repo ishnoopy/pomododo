@@ -16,3 +16,17 @@
 
   @apply bg-white rounded-full bg-emerald-300;
 }
+
+#root {
+  -webkit-app-region: drag;
+}
+
+/* Make sure interactive elements aren't draggable */
+button,
+input,
+select,
+[role="button"],
+a,
+*:focus-visible {
+  -webkit-app-region: no-drag !important;
+}
