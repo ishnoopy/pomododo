@@ -127,7 +127,10 @@ function App(): JSX.Element {
         <div
           className={`${darkMode ? 'bg-slate-800' : 'bg-emerald-800'} flex flex-col items-center justify-center h-screen`}
         >
-          <div className="toolbar absolute right-1 top-1 flex items-center gap-2">
+          <div
+            className={`titlebar draggable absolute top-0 left-0 right-0 h-8 ${darkMode ? 'bg-slate-800' : 'bg-emerald-800'}`}
+          ></div>
+          <div className="toolbar absolute right-1 top-1 flex items-center gap-2 z-50">
             <div className="toolbar-item">
               <button
                 className="text-white text-sm hover:text-white/50 transition-colors duration-300"

@@ -17,7 +17,8 @@
   @apply bg-white rounded-full bg-emerald-300;
 }
 
-#root {
+
+.draggable {
   -webkit-app-region: drag;
 }
 
