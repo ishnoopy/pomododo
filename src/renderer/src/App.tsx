@@ -10,9 +10,9 @@ import Dots from './components/dots'
 import { ThemeProvider } from './ThemeContext'
 
 function App(): JSX.Element {
-  const [maxSessionTime, setMaxSessionTime] = useState(25 * 60)
+  const [maxSessionTime, setMaxSessionTime] = useState(25 * 60) // 25 minutes
   const [sessionTime, setSessionTime] = useState(maxSessionTime)
-  const [maxBreakTime, setMaxBreakTime] = useState(5 * 60)
+  const [maxBreakTime, setMaxBreakTime] = useState(5 * 60) // 5 minutes
   const [breakTime, setBreakTime] = useState(maxBreakTime)
   const [isBreak, setIsBreak] = useState(false)
   const [isRunning, setIsRunning] = useState(false)
@@ -38,9 +38,11 @@ function App(): JSX.Element {
     },
 
     updateDot: () => {
+      // Dot is placed at the start when the session is divisible by the number of sessions
       if (sessions % numberOfSessions === 0) {
         setCurrentDot(0)
       } else {
+        // Otherwise, increment the dot
         setCurrentDot((prevDot) => prevDot + 1)
       }
     },
@@ -78,6 +80,7 @@ function App(): JSX.Element {
     timerFunctions.reset()
   }
 
+  // Run the timer when the app is running
   useEffect(() => {
     if (!isRunning) return
 
@@ -92,6 +95,7 @@ function App(): JSX.Element {
     return () => clearInterval(interval)
   }, [isRunning])
 
+  // Handle the timer completion for break and session
   useEffect(() => {
     const isBreakTimeOver = isBreak && breakTime === 0
     const isSessionTimeOver = !isBreak && sessionTime === 0
@@ -103,14 +107,17 @@ function App(): JSX.Element {
     }
   }, [sessionTime, breakTime])
 
+  // Reset the timer when flow duration is changed in the menu
   useEffect(() => {
     timerFunctions.reset()
   }, [maxSessionTime])
 
+  // Reset the break timer when break duration is changed in the menu
   useEffect(() => {
     setBreakTime(maxBreakTime)
   }, [maxBreakTime])
 
+  // Update the dot when the session is incremented
   useEffect(() => {
     timerFunctions.updateDot()
   }, [sessions])
@@ -121,6 +128,7 @@ function App(): JSX.Element {
   const formattedBreakTime = `${Math.floor(breakTime / 60)
     .toString()
     .padStart(2, '0')}:${(breakTime % 60).toString().padStart(2, '0')}`
+
   return (
     <>
       <ThemeProvider darkMode={darkMode} toggleDarkMode={toggleDarkMode}>
