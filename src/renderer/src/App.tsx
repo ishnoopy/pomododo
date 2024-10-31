@@ -108,6 +108,10 @@ function App(): JSX.Element {
   }, [maxSessionTime])
 
   useEffect(() => {
+    setBreakTime(maxBreakTime)
+  }, [maxBreakTime])
+
+  useEffect(() => {
     timerFunctions.updateDot()
   }, [sessions])
 
